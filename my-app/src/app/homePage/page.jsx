@@ -4,8 +4,8 @@ import Scroll from "../../components/scroll/scroll";
 import Friends from "../../components/friendsPage/friends";
 const HomePage = () => {
   return (
-    <div className="container mx-auto px-12 text-center ">
-      <div className="mainSection grid gap-4 grid-cols-3 ">
+    <div className="container mx-auto px-12   ">
+      <div className="flex justify-between  ">
         <Profile></Profile>
         <Scroll></Scroll>
         <Friends></Friends>
