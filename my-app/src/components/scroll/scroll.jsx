@@ -31,7 +31,8 @@ const Scroll = () => {
       comments_count: 1,
     },
   ]);
-  let x = null;
+  const img = true;
+
   const geting = async () => {
     const respons = await axios.get(`https://tarmeezacademy.com/api/v1/posts`);
     const posts = respons.data.data;
@@ -46,12 +47,7 @@ const Scroll = () => {
     <div className="  w-2/4 pt-5 px-5 h-screen">
       <div className="addPost flex  items-center bg-gray-900 rounded-3xl py-2">
         <div className="image ml-5 mr-10 rounded-full w-12 h-12 flex justify-center items-center ">
-          <Image
-            src="/image/avatar.png"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-          />
+          <Image src="/image/avatar.png" width={500} height={500} />
         </div>
         <h1>Add Post</h1>
         <Link
@@ -77,19 +73,17 @@ const Scroll = () => {
       </div>
 
       <div className="posts">
-        {post.map((ele, id) => {
-          return (
-            <Post
-              key={id}
-              commentsCount={ele.comments_count}
-              profileImage={ele.author.profile_image}
-              image={ele.image}
-              name={ele.author.name}
-              body={ele.body}
-              created={ele.created_at}
-            ></Post>
-          );
-        })}
+        {post.map((ele, id) => (
+          <Post
+            key={id}
+            commentsCount={ele.comments_count}
+            profileImage={ele.author.profile_image}
+            image={ele.image == {} ? "/image/photo.png" : ele.image}
+            name={ele.author.name}
+            body={ele.body}
+            created={ele.created_at}
+          ></Post>
+        ))}
       </div>
     </div>
   );

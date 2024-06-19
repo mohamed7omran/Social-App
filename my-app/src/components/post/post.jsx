@@ -3,7 +3,7 @@ import { GoComment } from "react-icons/go";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
-const Post = ({ profileImage, name, body, image, created, commentsCount }) => {
+const Post = ({ profileImage, name, body, created, commentsCount, image }) => {
   const imgRef = useRef();
   return (
     <div className=" post bg-gray-900 pb-3 rounded-lg">
@@ -13,7 +13,6 @@ const Post = ({ profileImage, name, body, image, created, commentsCount }) => {
             <Image
               className="rounded-full"
               src={profileImage}
-              alt="Picture of the author"
               width={500}
               height={500}
             />
