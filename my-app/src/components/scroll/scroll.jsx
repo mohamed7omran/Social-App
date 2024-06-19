@@ -4,6 +4,8 @@ import Image from "next/image";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Post from "../../components/post/post";
+import Link from "next/link";
+
 const Scroll = () => {
   const [post, setPost] = useState([
     {
@@ -29,12 +31,12 @@ const Scroll = () => {
       comments_count: 1,
     },
   ]);
-
+  let x = null;
   const geting = async () => {
     const respons = await axios.get(`https://tarmeezacademy.com/api/v1/posts`);
     const posts = respons.data.data;
-    setPost(posts);
     console.log(posts);
+    setPost(posts);
   };
   useEffect(() => {
     geting();
@@ -51,10 +53,13 @@ const Scroll = () => {
             height={500}
           />
         </div>
-        <h2>Add Post</h2>
-        <h1 className=" ml-2 bg-blue-700 rounded-full w-8 h-8 flex justify-center items-center ">
+        <h1>Add Post</h1>
+        <Link
+          href={"/addPostPage"}
+          className=" ml-2 bg-blue-700 rounded-full w-8 h-8 flex justify-center items-center "
+        >
           +
-        </h1>
+        </Link>
         <div className="flex grow justify-end mr-3">
           <button
             type="button"
@@ -72,17 +77,19 @@ const Scroll = () => {
       </div>
 
       <div className="posts">
-        {post.map((ele, id) => (
-          <Post
-            key={id}
-            commentsCount={ele.comments_count}
-            profileImage={ele.author.profile_image}
-            image={ele.image}
-            name={ele.author.name}
-            body={ele.body}
-            created={ele.created_at}
-          ></Post>
-        ))}
+        {post.map((ele, id) => {
+          return (
+            <Post
+              key={id}
+              commentsCount={ele.comments_count}
+              profileImage={ele.author.profile_image}
+              image={ele.image}
+              name={ele.author.name}
+              body={ele.body}
+              created={ele.created_at}
+            ></Post>
+          );
+        })}
       </div>
     </div>
   );

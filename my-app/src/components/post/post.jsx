@@ -1,9 +1,10 @@
-import React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { GoComment } from "react-icons/go";
 import Image from "next/image";
+import React, { useEffect, useRef } from "react";
 
 const Post = ({ profileImage, name, body, image, created, commentsCount }) => {
+  const imgRef = useRef();
   return (
     <div className=" post bg-gray-900 pb-3 rounded-lg">
       <div className="mt-5 pt-5 ">
@@ -21,13 +22,8 @@ const Post = ({ profileImage, name, body, image, created, commentsCount }) => {
           <div className="flex grow justify-end mr-3">+</div>
         </div>
         <p className="ml-5 mt-4">{body}</p>
-        <div className=" px-5 mt-2 ">
-          <Image
-            src={image}
-            alt="Picture of the author"
-            width={1000}
-            height={500}
-          />
+        <div ref={imgRef} className=" px-5 mt-2 ">
+          <Image src={image} width={1000} height={500} />
         </div>
         <div className="pl-5">
           <h2 className="text-xs text-slate-400">{created}</h2>
