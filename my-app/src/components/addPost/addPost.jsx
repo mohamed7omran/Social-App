@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import {
   Dialog,
@@ -8,9 +8,32 @@ import {
   Transition,
   TransitionChild,
 } from "@headlessui/react";
+import axios from "axios";
 const AddPost = () => {
+  const textRef = useRef();
+  const imgRef = useRef();
   // todo
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
+
+  const geting = async () => {
+    const text = textRef.current.value;
+    const img = imgRef.current.files[0];
+    const url = "https://tarmeezacademy.com/api/v1/posts";
+    const header = {
+      "content-type": "multipart/form-data",
+      authorization: `Bearer ${token}`,
+    };
+    const formData = new FormData();
+    formData.append("image", img);
+    formData.append("body", text);
+
+    const response = await axios.post(url, formData, { headers: header });
+  };
+
+  const handelClick = () => {
+    setOpen(false);
+    geting();
+  };
   return (
     <div>
       <Transition show={open}>
@@ -47,10 +70,10 @@ const AddPost = () => {
                           Add Post
                         </DialogTitle>
                         <div className="mt-2">
-                          <input
-                            type="text"
-                            className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
-                          ></input>
+                          <textarea
+                            ref={textRef}
+                            className="resize-none block h-20 w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+                          ></textarea>
                           <label
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             for="file_input"
@@ -58,6 +81,7 @@ const AddPost = () => {
                             Upload file
                           </label>
                           <input
+                            ref={imgRef}
                             className="block w-full text-sm text-gray-900 border border-gray-300  rounded-lg cursor-pointer bg-gray-300 dark:text-gray-400 focus:outline-none dark:bg-white dark:border-gray-600 dark:placeholder-gray-400"
                             aria-describedby="file_input_help"
                             id="file_input"
@@ -71,7 +95,7 @@ const AddPost = () => {
                     <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                      onClick={() => setOpen(false)}
+                      onClick={handelClick}
                     >
                       Publish
                     </button>
