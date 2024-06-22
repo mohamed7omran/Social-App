@@ -5,7 +5,7 @@ const Profile = () => {
   return (
     <div className=" bg-gray-900 h-80 w-1/5 pt-5 mt-5">
       <div className="flex items-center ">
-        <div className="image ml-5 mr-3 rounded-full w-12 h-12 flex justify-center items-center ">
+        <div className="image ml-5 mr-3 overflow-hidden rounded-full w-12 h-12 flex justify-center items-center ">
           <Image
             src="/image/avatar.png"
             alt="Picture of the author"

@@ -9,7 +9,7 @@ const Post = ({ profileImage, name, body, created, commentsCount, image }) => {
     <div className=" post bg-gray-900 pb-3 rounded-lg">
       <div className="mt-5 pt-5 ">
         <div className="flex items-center ">
-          <div className="image ml-5 mr-3 rounded-full w-12 h-12 flex justify-center items-center ">
+          <div className="image ml-5 mr-3 overflow-hidden rounded-full w-12 h-12 flex justify-center items-center ">
             <Image
               className="rounded-full"
               src={profileImage}

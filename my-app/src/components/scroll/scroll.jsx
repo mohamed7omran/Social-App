@@ -92,7 +92,11 @@ const Scroll = () => {
           <Post
             key={id}
             commentsCount={ele.comments_count}
-            profileImage={ele.author.profile_image}
+            profileImage={
+              Object.keys(ele.image).length == 0
+                ? "/image/default-avatar.webp"
+                : ele.author.profile_image
+            }
             image={
               Object.keys(ele.image).length == 0
                 ? "/image/photo.png"
