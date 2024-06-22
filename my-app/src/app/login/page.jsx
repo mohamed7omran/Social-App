@@ -6,6 +6,22 @@ import { IoIosLock } from "react-icons/io";
 const Login = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const postData = async (url = "", data = {}) => {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+        //"Content-Type": "application/x-www-form-urlencoded",
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  };
 
   const geting = () => {
     const username = usernameRef.current.value;
@@ -15,14 +31,9 @@ const Login = () => {
       password: userPassword,
     };
     const url = "https://tarmeezacademy.com/api/v1/login";
-    const token = "116204|gFvozZYAXT254byDv9QKLpovP4j7OQQ1JQk9eNsd";
-    const header = {
-      authorization: `Bearer ${token}`,
-    };
-
-    axios.post(url, params, { headers: header }).then((response) => {
-      console.log(response.data);
-    });
+    const token = "116226|Zu7j38E7obrRzLDJHTLv3RHnlA2zH97y4aER7jpx";
+    console.log(JSON.stringify(params));
+    console.log(postData(url, params));
   };
   const loginBtnClick = (e) => {
     e.preventDefault();
@@ -43,7 +54,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form id="login-form" className="space-y-6" method="POST">
+          <form id="login-form" className="space-y-6">
             <div>
               <label
                 htmlFor="email"

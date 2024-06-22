@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import Post from "../../components/post/post";
 import Link from "next/link";
 
@@ -31,15 +32,31 @@ const Scroll = () => {
       comments_count: 1,
     },
   ]);
+  // const { ref, inView } = useInView();
+  // const [currentPage, setCurrentPage] = useState();
   const geting = async () => {
-    const respons = await axios.get(`https://tarmeezacademy.com/api/v1/posts`);
+    const respons = await axios.get(
+      `https://tarmeezacademy.com/api/v1/posts?limit=20`
+    );
     const posts = respons.data.data;
+    // const lastPage = respons.data.meta.last_page;
     console.log(posts);
-    setPost(posts);
+    setPost((oldPost) => oldPost.concat(posts));
   };
+
   useEffect(() => {
     geting();
   }, []);
+
+  // useEffect(() => {
+  //   if (inView) {
+  //     const inc = () => {
+  //       setCurrentPage(currentPage + 1);
+  //     };
+  //     geting(currentPage);
+  //     console.log(currentPage);
+  //   }
+  // }, [inView]);
 
   return (
     <div className="  w-2/4 pt-5 px-5 h-screen">
@@ -86,6 +103,7 @@ const Scroll = () => {
             created={ele.created_at}
           ></Post>
         ))}
+        {/* <div ref={ref}></div> */}
       </div>
     </div>
   );
