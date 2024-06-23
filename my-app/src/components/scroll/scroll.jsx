@@ -34,7 +34,7 @@ const Scroll = () => {
   ]);
   // const { ref, inView } = useInView();
   // const [currentPage, setCurrentPage] = useState();
-  const geting = async () => {
+  const getting = async () => {
     const respons = await axios.get(
       `https://tarmeezacademy.com/api/v1/posts?limit=20`
     );
@@ -45,7 +45,7 @@ const Scroll = () => {
   };
 
   useEffect(() => {
-    geting();
+    getting();
   }, []);
 
   // useEffect(() => {
@@ -93,7 +93,7 @@ const Scroll = () => {
             key={id}
             commentsCount={ele.comments_count}
             profileImage={
-              Object.keys(ele.image).length == 0
+              Object.keys(ele.author.profile_image).length == 0
                 ? "/image/default-avatar.webp"
                 : ele.author.profile_image
             }
