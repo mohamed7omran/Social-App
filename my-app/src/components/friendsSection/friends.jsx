@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Friends = () => {
   return (
@@ -39,8 +40,8 @@ const Friends = () => {
                     email@windster.com
                   </p>
                 </div>
-                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                  +
+                <div className="cursor-pointer inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                  <RiDeleteBin6Line size={18} />
                 </div>
               </div>
             </li>
@@ -62,8 +63,8 @@ const Friends = () => {
                     email@windster.com
                   </p>
                 </div>
-                <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                  +
+                <div className="cursor-pointer inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                  <RiDeleteBin6Line size={18} />
                 </div>
               </div>
             </li>

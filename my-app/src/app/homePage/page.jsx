@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import Profile from "../../components/profilePage/profile";
+import Profile from "../../components/profileSection/profile";
 import Scroll from "../../components/scroll/scroll";
 import AddPost from "../../components/addPost/addPost";
-import Friends from "../../components/friendsPage/friends";
+import Friends from "../../components/friendsSection/friends";
 import { FaArrowUp } from "react-icons/fa";
 
 import { useState } from "react";
