@@ -4,7 +4,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Friends = () => {
   return (
-    <div className="  h-80 w-1/4 pt-5 mt-5">
+    <div className=" pt-5 mt-5">
       <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex items-center justify-between mb-4">
           <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
@@ -36,9 +36,6 @@ const Friends = () => {
                   <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
                     Neil Sims
                   </p>
-                  <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                    email@windster.com
-                  </p>
                 </div>
                 <div className="cursor-pointer inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                   <RiDeleteBin6Line size={18} />
@@ -58,9 +55,6 @@ const Friends = () => {
                 <div className="flex-1 min-w-0 ms-4">
                   <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
                     Bonnie Green
-                  </p>
-                  <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                    email@windster.com
                   </p>
                 </div>
                 <div className="cursor-pointer inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">

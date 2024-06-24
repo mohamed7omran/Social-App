@@ -5,18 +5,24 @@ import Scroll from "../../components/scroll/scroll";
 import AddPost from "../../components/addPost/addPost";
 import Friends from "../../components/friendsSection/friends";
 import { FaArrowUp } from "react-icons/fa";
+import Link from "next/link";
 
 import { useState } from "react";
-import Link from "next/link";
 
 const HomePage = () => {
   return (
     <div id="up" className=" container mx-auto px-12   ">
       <div className="flex justify-between  ">
         <AddPost></AddPost>
-        <Profile></Profile>
-        <Scroll></Scroll>
-        <Friends></Friends>
+        <div className=" cursor-pointer w-1/5 mt-20">
+          <Profile></Profile>
+        </div>
+        <div className="w-2/4">
+          <Scroll></Scroll>
+        </div>
+        <div className="h-80 mt-16 w-1/4">
+          <Friends></Friends>
+        </div>
         <Link href="#up">
           <button
             type="button"

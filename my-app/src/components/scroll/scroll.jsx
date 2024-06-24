@@ -59,7 +59,7 @@ const Scroll = () => {
   // }, [inView]);
 
   return (
-    <div className="  w-2/4 pt-5 px-5 h-screen">
+    <div className=" pt-5 px-5 h-screen">
       <div className="addPost flex  items-center bg-gray-900 rounded-3xl py-2">
         <div className="image ml-5 mr-10 rounded-full w-12 h-12 flex justify-center items-center ">
           <Image src="/image/avatar.png" width={500} height={500} />

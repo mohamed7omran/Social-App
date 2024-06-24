@@ -2,6 +2,7 @@ import { AiOutlineLike } from "react-icons/ai";
 import { GoComment } from "react-icons/go";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { IoIosPersonAdd } from "react-icons/io";
 
 const Post = ({ profileImage, name, body, created, commentsCount, image }) => {
@@ -19,7 +20,7 @@ const Post = ({ profileImage, name, body, created, commentsCount, image }) => {
             />
           </div>
           <h2>{name}</h2>
-          <div className="cursor-pointer flex grow justify-end mr-3">
+          <div className="cursor-pointer flex grow justify-end mr-5">
             <IoIosPersonAdd size={23} />
           </div>
         </div>
@@ -34,7 +35,10 @@ const Post = ({ profileImage, name, body, created, commentsCount, image }) => {
               <AiOutlineLike size={20} /> <h2 className="ml-2">16</h2>
             </div>
             <div className=" flex ml-6 justify-center items-center">
-              <GoComment size={20} /> <h2 className="ml-2">{commentsCount}</h2>
+              <Link href={"homePage/comments"}>
+                <GoComment size={20} />{" "}
+              </Link>
+              <h2 className="ml-2">{commentsCount}</h2>
             </div>
           </div>
         </div>
