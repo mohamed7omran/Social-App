@@ -1,26 +1,33 @@
+"use client";
 import React from "react";
 import Profile from "../../components/profileSection/profile";
 import Scroll from "../../components/scroll/scroll";
 import AddPost from "../../components/addPost/addPost";
-import Image from "next/image";
-
 import Friends from "../../components/friendsSection/friends";
+import Header from "../../components/header/header";
 import { FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
-const ProfilPage = () => {
+import { Provider } from "react-redux";
+import store from "../router/index";
+import { useState } from "react";
+
+const HomePage = () => {
   return (
-    <div className=" container mx-auto px-36">
-      <div className="flex justify-center">
-        <div className="mr-7 mt-20">
-          <div className="w-full">
-            <Profile></Profile>
-          </div>
-          <div>
-            <Friends></Friends>
-          </div>
-        </div>
+    <div id="up" className=" container mx-auto px-12   ">
+      <div className="flex justify-between  ">
         <AddPost></AddPost>
-        <Scroll></Scroll>
+        <div className=" cursor-pointer w-1/5 mt-24">
+          <Profile></Profile>
+        </div>
+        <div className="w-2/4">
+          <Header></Header>
+          {/* <Provider store={store}> */}
+          <Scroll></Scroll>
+          {/* </Provider> */}
+        </div>
+        <div className="h-80 mt-20 w-1/4">
+          <Friends></Friends>
+        </div>
         <Link href="#up">
           <button
             type="button"
@@ -34,4 +41,4 @@ const ProfilPage = () => {
   );
 };
 
-export default ProfilPage;
+export default HomePage;

@@ -1,28 +1,26 @@
-"use client";
 import React from "react";
 import Profile from "../../components/profileSection/profile";
 import Scroll from "../../components/scroll/scroll";
 import AddPost from "../../components/addPost/addPost";
+import Image from "next/image";
+
 import Friends from "../../components/friendsSection/friends";
 import { FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
-
-import { useState } from "react";
-
-const HomePage = () => {
+const ProfilPage = () => {
   return (
-    <div id="up" className=" container mx-auto px-12   ">
-      <div className="flex justify-between  ">
+    <div className=" container mx-auto px-36">
+      <div className="flex justify-center">
+        <div className="mr-7 ">
+          <div className="w-full">
+            <Profile></Profile>
+          </div>
+          <div>
+            <Friends></Friends>
+          </div>
+        </div>
         <AddPost></AddPost>
-        <div className=" cursor-pointer w-1/5 mt-20">
-          <Profile></Profile>
-        </div>
-        <div className="w-2/4">
-          <Scroll></Scroll>
-        </div>
-        <div className="h-80 mt-16 w-1/4">
-          <Friends></Friends>
-        </div>
+        <Scroll></Scroll>
         <Link href="#up">
           <button
             type="button"
@@ -36,4 +34,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ProfilPage;

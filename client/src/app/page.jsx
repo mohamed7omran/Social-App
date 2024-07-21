@@ -1,8 +1,5 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const navigation = [
@@ -13,8 +10,6 @@ const navigation = [
 ];
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <div className="bg-black">
       <div className="relative isolate px-6  lg:px-8">
