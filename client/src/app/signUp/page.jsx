@@ -4,27 +4,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoMdPersonAdd } from "react-icons/io";
 
 const Login = () => {
-  const [username, setUsername] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [proImg, setProImg] = useState();
-  // const {
-  //   setUsername: setLoggedInUsername,
-  //   setId,
-  //   setProImg: setImg,
-  // } = useContext(UserContext);
 
-  const handlSubmit = async (event) => {
+  const handelSubmit = async (event) => {
     event.preventDefault();
-    const url = "http://localhost:8000/signUP";
+    const url = "http://localhost:8000/register";
     const { data } = await axios.post(url, {
-      username,
+      email,
       password,
-      proImg,
     });
-    console.log("data is ", data);
-    // setLoggedInUsername(username);
-    // setId(data.id);
-    // setImg(proImg);
+    console.log("data is ");
   };
   return (
     <>
@@ -53,72 +46,111 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handlSubmit}>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-white"
-              >
-                Username
-              </label>
-              <div className="mt-2">
+          <form class="max-w-md mx-auto" onSubmit={handelSubmit}>
+            <div class="grid md:grid-cols-2 md:gap-6">
+              <div class="relative z-0 w-full mb-5 group">
                 <input
-                  onChange={(ev) => setUsername(ev.target.value)}
-                  id="email"
                   type="text"
+                  onChange={(ev) => setFirstName(ev.target.value)}
+                  id="floating_first_name"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
                   required
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between">
                 <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-white"
+                  for="floating_first_name"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
-                  Password
+                  First name
                 </label>
               </div>
-              <div className="mt-2">
+              <div class="relative z-0 w-full mb-5 group">
                 <input
-                  onChange={(ev) => setPassword(ev.target.value)}
-                  id="password"
-                  type="password"
-                  autoComplete="current-password"
+                  type="text"
+                  onChange={(ev) => setLastName(ev.target.value)}
+                  id="floating_last_name"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
                   required
-                  className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center justify-between">
                 <label
-                  htmlFor="proImg"
-                  className="block text-sm font-medium leading-6 text-white"
+                  for="floating_last_name"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
-                  Profile Image
+                  Last name
                 </label>
               </div>
-              <div className="mt-2">
-                <input
-                  onChange={(ev) => setProImg(ev.target.value)}
-                  id="proImg"
-                  type="file"
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 px-2 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
             </div>
-
-            <div>
+            <div class="relative z-0 w-full mb-5 group">
+              <input
+                type="email"
+                onChange={(ev) => setEmail(ev.target.value)}
+                id="floating_email"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="floating_email"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Email address
+              </label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+              <input
+                type="password"
+                onChange={(ev) => setPassword(ev.target.value)}
+                id="floating_password"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="floating_password"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Password
+              </label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+              <input
+                type="password"
+                id="floating_repeat_password"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="floating_repeat_password"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                Confirm password
+              </label>
+            </div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="proImg"
+                className="block text-sm font-medium leading-6 text-gray-400"
+              >
+                Profile Image
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                onChange={(ev) => setProImg(ev.target.value)}
+                id="proImg"
+                type="file"
+                required
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 px-2 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            <div className="mt-3">
               <button
-                form="login-form"
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign Up
+                Register
               </button>
             </div>
           </form>
