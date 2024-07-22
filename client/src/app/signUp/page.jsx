@@ -14,14 +14,17 @@ const Login = () => {
 
   const handelSubmit = async (event) => {
     event.preventDefault();
-    const url = "http://localhost:8000/register";
+    const url = "http://localhost:8000/auth/register";
     const { data } = await axios.post(url, {
+      firstName,
+      lastName,
       email,
       password,
+      proImg,
     });
     console.log("data is ", data);
-    // setLoggedInEmail(email);
-    // setId(data.id);
+    setLoggedInEmail(email);
+    setId(data.id);
   };
   return (
     <>

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import User from "../models/user.js";
 
 // REGISTER USER //
@@ -29,12 +29,26 @@ export const register = async (req, res) => {
       viewedProfile: Math.floor(Math.random() * 10000),
       impressions: Math.floor(Math.random() * 10000),
     });
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
+    jwt.sign(
+      { userId: newUser._id, email },
+      process.env.JWT_SECRET,
+      {},
+      (err, token) => {
+        if (err) throw err;
+
+        res.cookie("token", token).status(201).json({
+          id: newUser._id,
+        });
+      }
+    );
+
+    // const savedUser = await newUser.save();
+    // res.status(201).json("user saved", savedUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 // ** LOGGING IN
 export const login = async (req, res) => {
   try {

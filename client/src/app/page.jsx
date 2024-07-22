@@ -5,8 +5,8 @@ import App from "./App";
 export const UserContext = createContext({});
 
 export default function Home() {
-  // const [email, setEmail] = useState(null);
-  // const [id, setId] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [id, setId] = useState(null);
 
   // useEffect(() => {
   //   axios.get("/profile").then((response) => {
