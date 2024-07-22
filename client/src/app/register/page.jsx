@@ -4,7 +4,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { IoMdPersonAdd } from "react-icons/io";
 import { UserContext } from "../page";
 
-const Login = () => {
+const Register = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
@@ -166,4 +166,4 @@ const Login = () => {
     </>
   );
 };
-export default Login;
+export default Register;

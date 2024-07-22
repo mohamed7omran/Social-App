@@ -6,38 +6,15 @@ import { IoIosLock } from "react-icons/io";
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const postData = async (url = "", data = {}) => {
-    // Default options are marked with *
-    const response = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        //"Content-Type": "application/x-www-form-urlencoded",
-      },
-      redirect: "follow", // manual, *follow, error
-      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  };
 
-  const geting = () => {
-    const username = usernameRef.current.value;
-    const userPassword = passwordRef.current.value;
-    const params = {
-      username: username,
-      password: userPassword,
-    };
-    const url = "https://tarmeezacademy.com/api/v1/login";
-    const token = "116226|Zu7j38E7obrRzLDJHTLv3RHnlA2zH97y4aER7jpx";
-    console.log(JSON.stringify(params));
-    console.log(postData(url, params));
-  };
-  const loginBtnClick = (e) => {
+  const handelSubmit = async (e) => {
     e.preventDefault();
-    geting();
+    const url = "http://localhost:8000/auth/login";
+    const { data } = await axios.post(url, {
+      email,
+      password,
+    });
+    console.log("data login is ", data);
   };
 
   return (
@@ -68,7 +45,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form id="login-form" className="space-y-6">
+          <form className="space-y-6" onSubmit={handelSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -106,7 +83,7 @@ const Login = () => {
               </div>
               <div className="mt-2">
                 <input
-                  onChange={(ev) => setEmail(ev.target.value)}
+                  onChange={(ev) => setPassword(ev.target.value)}
                   id="password"
                   type="password"
                   autoComplete="current-password"
@@ -118,8 +95,6 @@ const Login = () => {
 
             <div>
               <button
-                form="login-form"
-                onClick={loginBtnClick}
                 type="submit"
                 className="flex w-full  justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >

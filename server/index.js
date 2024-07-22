@@ -13,9 +13,6 @@ import authRoutes from "./routes/auth.js";
 import { register } from "./controllers/auth.js";
 import { profile } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/auth.js";
-// import jwt from "jsonwebtoken";
-// import bcrypt from "bcrypt";
-// import User from "./models/user.js";
 
 // configuration//
 const __filename = fileURLToPath(import.meta.url);

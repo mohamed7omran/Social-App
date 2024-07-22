@@ -1,6 +1,6 @@
 "use client";
 import Landing from "./landing";
-import SignUp from "./signUp/page";
+import Register from "./register/page";
 import HomePage from "./homePage/page";
 import { useContext } from "react";
 import { UserContext } from "./page";
@@ -10,5 +10,5 @@ export default function App() {
   if (email) {
     return <HomePage />;
   }
-  return <SignUp />;
+  return <Register />;
 }
