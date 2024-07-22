@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "../models/user.js";
 
-// REGISTER USER //
+//** REGISTER USER ** //
 export const register = async (req, res) => {
   try {
     const {
@@ -29,6 +29,7 @@ export const register = async (req, res) => {
       viewedProfile: Math.floor(Math.random() * 10000),
       impressions: Math.floor(Math.random() * 10000),
     });
+    await newUser.save();
     jwt.sign(
       { userId: newUser._id, email },
       process.env.JWT_SECRET,
@@ -42,14 +43,13 @@ export const register = async (req, res) => {
       }
     );
 
-    // const savedUser = await newUser.save();
     // res.status(201).json("user saved", savedUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-// ** LOGGING IN
+// ** LOGGING IN **//
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -63,6 +63,21 @@ export const login = async (req, res) => {
     res.status(200).json({ token, user });
   } catch (error) {
     res.status(500).json({ error: err.message });
+  }
+};
+
+// ** PROFILE **//
+
+export const profile = async (req, res) => {
+  const token = req.cookies?.token;
+  if (token) {
+    // return id and email
+    jwt.verify(token, process.env.JWT_SECRET, {}, (err, userData) => {
+      if (err) throw err;
+      res.json(userData);
+    });
+  } else {
+    res.status(401).json("no token");
   }
 };
 

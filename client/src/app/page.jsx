@@ -8,13 +8,13 @@ export default function Home() {
   const [email, setEmail] = useState(null);
   const [id, setId] = useState(null);
 
-  // useEffect(() => {
-  //   axios.get("/profile").then((response) => {
-  //     console.log("profile res :", response.data);
-  //     setId(response.data.userId);
-  //     setUsername(response.data.email);
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("/auth/profile").then((response) => {
+      console.log("profile res :", response.data);
+      setId(response.data.userId);
+      setEmail(response.data.email);
+    });
+  }, []);
   axios.defaults.baseURL = "http://localhost:8000";
   // for set cookies from api
   axios.defaults.withCredentials = true;

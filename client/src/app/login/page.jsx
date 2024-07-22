@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosLock } from "react-icons/io";
 
 const Login = () => {
-  const usernameRef = useRef();
-  const passwordRef = useRef();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const postData = async (url = "", data = {}) => {
     // Default options are marked with *
     const response = await fetch(url, {
@@ -74,13 +74,12 @@ const Login = () => {
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-white"
               >
-                Username
+                Email
               </label>
               <div className="mt-2">
                 <input
-                  ref={usernameRef}
+                  onChange={(ev) => setEmail(ev.target.value)}
                   id="email"
-                  name="username"
                   type="text"
                   required
                   className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -107,9 +106,8 @@ const Login = () => {
               </div>
               <div className="mt-2">
                 <input
-                  ref={passwordRef}
+                  onChange={(ev) => setEmail(ev.target.value)}
                   id="password"
-                  name="password"
                   type="password"
                   autoComplete="current-password"
                   required
