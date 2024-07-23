@@ -2,10 +2,13 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosLock } from "react-icons/io";
-
+import { useSelector, useDispatch } from "react-redux";
+import { email, password } from "../router/registerAndLoginSlice";
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  // const dispatch = useDispatch();
+
+  // const email = useSelector((state) => state.registerAndLogin.email);
+  // const password = useSelector((state) => state.registerAndLogin.password);
 
   const handelSubmit = async (e) => {
     e.preventDefault();

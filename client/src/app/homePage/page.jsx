@@ -7,9 +7,6 @@ import Friends from "../../components/friendsSection/friends";
 import Header from "../../components/header/header";
 import { FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
-import { Provider } from "react-redux";
-import store from "../router/index";
-import { useState } from "react";
 
 const HomePage = () => {
   return (

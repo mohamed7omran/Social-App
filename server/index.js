@@ -10,8 +10,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.js";
-import { register } from "./controllers/auth.js";
-import { profile } from "./controllers/auth.js";
+import { register, profile, login } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/auth.js";
 
 // configuration//
@@ -48,6 +47,7 @@ const upload = multer({ storage });
 // ROUTES WITH FILES //
 app.post("/auth/register", upload.single("picture"), register);
 app.get("/auth/profile", upload.single("picture"), profile);
+app.post("/auth/login", upload.single("picture"), login);
 // ROUTES //
 app.use("auth", authRoutes);
 
