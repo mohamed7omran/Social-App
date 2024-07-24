@@ -3,13 +3,14 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosLock } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
-import { email, password } from "../router/registerAndLoginSlice";
+// import { email, password } from "../router/registerAndLoginSlice";
 const Login = () => {
   // const dispatch = useDispatch();
 
   // const email = useSelector((state) => state.registerAndLogin.email);
   // const password = useSelector((state) => state.registerAndLogin.password);
-
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const handelSubmit = async (e) => {
     e.preventDefault();
     const url = "http://localhost:8000/auth/login";
