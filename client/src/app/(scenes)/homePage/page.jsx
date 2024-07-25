@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import Profile from "../../components/profileSection/profile";
-import Scroll from "../../components/scroll/scroll";
-import AddPost from "../../components/addPost/addPost";
-import Friends from "../../components/friendsSection/friends";
-import Header from "../../components/header/header";
+import Profile from "../../../components/profileSection/profile";
+import Scroll from "../../../components/scroll/scroll";
+import AddPost from "../../../components/addPost/addPost";
+import Friends from "../../../components/friendsSection/friends";
+import Header from "../../../components/header/header";
 import { FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
 
