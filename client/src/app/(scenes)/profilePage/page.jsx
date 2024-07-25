@@ -1,13 +1,12 @@
 import React from "react";
-import Profile from "../../components/profileSection/profile";
-import Scroll from "../../components/scroll/scroll";
-import AddPost from "../../components/addPost/addPost";
+import Profile from "../../../components/profileSection/profile";
+import Scroll from "../../../components/scroll/scroll";
+import AddPost from "../../../components/addPost/addPost";
 import Image from "next/image";
-
-import Friends from "../../components/friendsSection/friends";
+import Friends from "../../../components/friendsSection/friends";
 import { FaArrowUp } from "react-icons/fa";
 import Link from "next/link";
-const ProfilPage = () => {
+const ProfilePage = () => {
   return (
     <div className=" container mx-auto px-36">
       <div className="flex justify-center">
