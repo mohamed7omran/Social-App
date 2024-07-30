@@ -12,15 +12,12 @@ const HomePage = () => {
   return (
     <div id="up" className=" container mx-auto px-12   ">
       <div className="flex justify-between  ">
-        <AddPost></AddPost>
         <div className=" cursor-pointer w-1/5 mt-24">
           <Profile></Profile>
         </div>
         <div className="w-2/4">
           <Header></Header>
-          {/* <Provider store={store}> */}
           <Scroll></Scroll>
-          {/* </Provider> */}
         </div>
         <div className="h-80 mt-20 w-1/4">
           <Friends></Friends>

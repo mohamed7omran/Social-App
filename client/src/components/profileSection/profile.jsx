@@ -6,7 +6,7 @@ import Link from "next/link";
 const Profile = () => {
   return (
     <div className=" bg-gray-900 h-80  pt-5 mt-5">
-      <Link href={"/profilPage"}>
+      <Link href={"/profilePage"}>
         <div className="flex items-center ">
           <div className="image ml-5 mr-3 overflow-hidden rounded-full w-12 h-12 flex justify-center items-center ">
             <Image

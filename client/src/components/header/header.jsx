@@ -1,19 +1,30 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AddPost from "../addPost/addPost";
+import { createContext, useState } from "react";
+
+export const AddContext = createContext();
 const Header = () => {
+  const [addPost, setAddPost] = useState();
   return (
     <div className=" addPost mt-8 px-5 flex  items-center bg-gray-900 rounded-3xl py-2">
       <div className="image ml-5 mr-10 rounded-full w-12 h-12 flex justify-center items-center ">
         <Image src="/image/avatar.png" width={500} height={500} />
       </div>
       <h1>Add Post</h1>
-      <Link
-        href={"/addPostPage"}
-        className=" ml-2 bg-blue-700 rounded-full w-8 h-8 flex justify-center items-center "
+      <div>
+        {addPost && (
+          <AddContext.Provider value={{ setAddPost }}>
+            <AddPost />
+          </AddContext.Provider>
+        )}
+      </div>
+      <div
+        onClick={() => setAddPost(!addPost)}
+        className=" ml-2 bg-blue-700 rounded-full w-8 h-8 flex justify-center items-center cursor-pointer"
       >
         +
-      </Link>
+      </div>
       <div className="flex grow justify-end mr-3">
         <Link
           href={"/"}

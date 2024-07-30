@@ -11,9 +11,6 @@ import { themeSettings } from "./theme";
 export const UserContext = createContext({});
 
 export default function Home() {
-  const mode = useSelector((state) => state.mode);
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-
   // const [email, setEmail] = useState(null);
   // const [id, setId] = useState(null);
 
@@ -28,13 +25,5 @@ export default function Home() {
   axios.defaults.baseURL = "http://localhost:8000";
   // for set cookies from api
   axios.defaults.withCredentials = true;
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline>
-        <Login />
-        {/* <HomePage />
-        <ProfilePage /> */}
-      </CssBaseline>
-    </ThemeProvider>
-  );
+  return <Login />;
 }

@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AddContext } from "../header/header";
 import {
   Dialog,
   DialogPanel,
@@ -10,6 +11,7 @@ import {
 } from "@headlessui/react";
 import axios from "axios";
 const AddPost = () => {
+  let { setAddPost } = useContext(AddContext);
   const textRef = useRef();
   const imgRef = useRef();
   // todo
@@ -32,7 +34,12 @@ const AddPost = () => {
 
   const handelClick = () => {
     setOpen(false);
+    setAddPost(false);
     geting();
+  };
+  const closeClick = () => {
+    setOpen(false);
+    setAddPost(false);
   };
   return (
     <div>
@@ -102,7 +109,7 @@ const AddPost = () => {
                     <button
                       type="button"
                       className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                      onClick={() => setOpen(false)}
+                      onClick={closeClick}
                       data-autofocus
                     >
                       Cancel

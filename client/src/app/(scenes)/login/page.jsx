@@ -9,17 +9,17 @@ const Login = () => {
 
   // const email = useSelector((state) => state.registerAndLogin.email);
   // const password = useSelector((state) => state.registerAndLogin.password);
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const handelSubmit = async (e) => {
-    e.preventDefault();
-    const url = "http://localhost:8000/auth/login";
-    const { data } = await axios.post(url, {
-      email,
-      password,
-    });
-    console.log("data login is ", data);
-  };
+  // const [email, setEmail] = useState();
+  // const [password, setPassword] = useState();
+  // const handelSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const url = "http://localhost:8000/auth/login";
+  //   const { data } = await axios.post(url, {
+  //     email,
+  //     password,
+  //   });
+  //   console.log("data login is ", data);
+  // };
 
   return (
     <>
@@ -49,7 +49,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handelSubmit}>
+          <form className="space-y-5">
             <div>
               <label
                 htmlFor="email"
@@ -76,14 +76,6 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
               </div>
               <div className="mt-2">
                 <input
@@ -106,6 +98,24 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <div className="flex justify-between items-center mt-2">
+            <div className="text-sm">
+              <a
+                href="#"
+                className="font-semibold text-indigo-600 hover:text-indigo-500"
+              >
+                Forgot password?
+              </a>
+            </div>
+            <div>
+              <a
+                href="#"
+                className="font-semibold text-indigo-600 hover:text-indigo-500"
+              >
+                Register
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </>

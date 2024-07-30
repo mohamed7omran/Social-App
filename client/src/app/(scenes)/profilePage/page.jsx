@@ -33,4 +33,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilPage;
+export default ProfilePage;

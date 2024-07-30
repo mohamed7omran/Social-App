@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useContext, useState } from "react";
 import { IoMdPersonAdd } from "react-icons/io";
-import { UserContext } from "../page";
+// import { UserContext } from "../page";
 
 const Register = () => {
   const [firstName, setFirstName] = useState();
@@ -10,21 +10,21 @@ const Register = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [proImg, setProImg] = useState();
-  const { setEmail: setLoggedInEmail, setId } = useContext(UserContext);
+  // const { setEmail: setLoggedInEmail, setId } = useContext(UserContext);
 
   const handelSubmit = async (event) => {
     event.preventDefault();
-    const url = "http://localhost:8000/auth/register";
-    const { data } = await axios.post(url, {
-      firstName,
-      lastName,
-      email,
-      password,
-      proImg,
-    });
-    console.log("data is ", data);
-    setLoggedInEmail(email);
-    setId(data.id);
+    // const url = "http://localhost:8000/auth/register";
+    // const { data } = await axios.post(url, {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   password,
+    //   proImg,
+    // });
+    // console.log("data is ", data);
+    // setLoggedInEmail(email);
+    // setId(data.id);
   };
   return (
     <>

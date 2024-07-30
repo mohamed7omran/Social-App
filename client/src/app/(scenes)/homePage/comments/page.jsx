@@ -1,9 +1,9 @@
 "use client";
 import React, { useRef } from "react";
-import Post from "../../../components/post/post";
+import Post from "../../../../components/post/post";
 import axios from "axios";
 import Link from "next/link";
-import Comment from "../../../components/comment/comment";
+import Comment from "../../../../components/comment/comment";
 import { FaArrowUp } from "react-icons/fa";
 
 import { useState, useEffect } from "react";
