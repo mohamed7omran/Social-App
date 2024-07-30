@@ -8,8 +8,6 @@ const UserSchema = new mongoose.Schema(
     password: { type: String, require: true, min: 5 },
     picturePath: { type: String, default: "" },
     friends: { type: Array, default: [] },
-    location: String,
-    occupation: String,
     viewedProfile: Number,
     impressions: Number,
   },

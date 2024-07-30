@@ -18,7 +18,6 @@ const ProfilePage = () => {
             <Friends></Friends>
           </div>
         </div>
-        <AddPost></AddPost>
         <Scroll></Scroll>
         <Link href="#up">
           <button

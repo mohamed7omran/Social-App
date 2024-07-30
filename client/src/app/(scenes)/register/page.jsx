@@ -9,22 +9,19 @@ const Register = () => {
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [proImg, setProImg] = useState();
-  // const { setEmail: setLoggedInEmail, setId } = useContext(UserContext);
+  // const [proImg, setProImg] = useState();
 
   const handelSubmit = async (event) => {
     event.preventDefault();
-    // const url = "http://localhost:8000/auth/register";
-    // const { data } = await axios.post(url, {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password,
-    //   proImg,
-    // });
-    // console.log("data is ", data);
-    // setLoggedInEmail(email);
-    // setId(data.id);
+    const url = "http://localhost:8000/auth/register";
+    const { data } = await axios.post(url, {
+      firstName,
+      lastName,
+      email,
+      password,
+      // proImg,
+    });
+    console.log("data is ", data);
   };
   return (
     <>
@@ -145,7 +142,7 @@ const Register = () => {
             </div>
             <div className="mt-2">
               <input
-                onChange={(ev) => setProImg(ev.target.value)}
+                // onChange={(ev) => setProImg(ev.target.value)}
                 id="proImg"
                 type="file"
                 required

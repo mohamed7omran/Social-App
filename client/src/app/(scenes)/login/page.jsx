@@ -109,7 +109,7 @@ const Login = () => {
             </div>
             <div>
               <a
-                href="#"
+                href="/register"
                 className="font-semibold text-indigo-600 hover:text-indigo-500"
               >
                 Register
