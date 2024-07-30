@@ -23,12 +23,21 @@ export const register = async (req, res) => {
     jwt.sign(
       { userId: newUser._id, email },
       process.env.JWT_SECRET,
-      {},
+      { expiresIn: "1h" }, // Optional: Add token expiration
       (err, token) => {
-        if (err) throw err;
-        res.cookie("token", token).status(201).json({
-          id: newUser._id,
-        });
+        if (err) {
+          return res.status(500).json({ error: "Token generation failed" });
+        }
+        res
+          .cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production", // Ensures secure cookie in production
+            expires: new Date(Date.now() + 3600000), // 1 hour from now
+          })
+          .status(201)
+          .json({
+            id: newUser._id,
+          });
       }
     );
 
@@ -48,9 +57,14 @@ export const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    delete user.password;
-    res.status(200).json({ token, user });
+    jwt.sign({ id: user._id, email }, process.env.JWT_SECRET, (err, token) => {
+      if (err) {
+        return res.status(500).json({ error: "Token generation failed" });
+      }
+      res.cookie("token", token).status(201).json({
+        id: user._id,
+      });
+    });
   } catch (error) {
     res.status(500).json({ error: err.message });
   }

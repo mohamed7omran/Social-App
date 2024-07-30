@@ -9,17 +9,17 @@ const Login = () => {
 
   // const email = useSelector((state) => state.registerAndLogin.email);
   // const password = useSelector((state) => state.registerAndLogin.password);
-  // const [email, setEmail] = useState();
-  // const [password, setPassword] = useState();
-  // const handelSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const url = "http://localhost:8000/auth/login";
-  //   const { data } = await axios.post(url, {
-  //     email,
-  //     password,
-  //   });
-  //   console.log("data login is ", data);
-  // };
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+    const url = "http://localhost:8000/auth/login";
+    const { data } = await axios.post(url, {
+      email,
+      password,
+    });
+    console.log("data login is ", data);
+  };
 
   return (
     <>
@@ -49,7 +49,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handelSubmit}>
             <div>
               <label
                 htmlFor="email"

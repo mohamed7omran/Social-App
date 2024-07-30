@@ -52,9 +52,10 @@ const upload = multer({ storage });
 
 // ROUTES WITH FILES //
 // app.post("/auth/register", upload.single("picture"), register);
-app.post("/auth/register", register);
-app.post("/posts", verifyToken, upload.single("picture"), createPost);
 // app.get("/auth/profile", upload.single("picture"), profile);
+app.post("/auth/register", register);
+app.get("/auth/profile", profile);
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 // ROUTES //
 app.use("/auth", authRoutes);
 app.use("/users", usersRoutes);
