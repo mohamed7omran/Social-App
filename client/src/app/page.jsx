@@ -1,28 +1,43 @@
 "use client";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import Login from "./(scenes)/login/page";
+import Landing from "./landing";
 import HomePage from "./(scenes)/homePage/page";
 import { useSelector, useDispatch } from "react-redux";
 import { setEmail, setId } from "./redux/authSlice";
+
 export default function Home() {
   const dispatch = useDispatch();
-  const globalState = useSelector((state) => state);
-  console.log("email", globalState.email);
+  const { email, id: userId } = useSelector((state) => state.auth); // Use 'auth' as per your slice
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("/auth/profile").then((response) => {
-      console.log("profile res :", response.data);
-      // dispatch(setEmail(response.data.email));
-      // dispatch(setId(response.data.userId));
-    });
-  }, []);
-  // if (setEmail) {
-  //   return <HomePage></HomePage>;
-  // }
+    // Set axios defaults
+    axios.defaults.baseURL = "http://localhost:8000";
+    axios.defaults.withCredentials = true;
 
-  axios.defaults.baseURL = "http://localhost:8000";
-  // for set cookies from api
-  axios.defaults.withCredentials = true;
-  return <Login />;
+    axios
+      .post("/auth/profile")
+      .then((response) => {
+        console.log("profile res:", response.data);
+        dispatch(setEmail(response.data.email)); // Dispatch email from response
+        dispatch(setId(response.data.userId)); // Dispatch userId from response
+      })
+      .catch((error) => {
+        console.error("Failed to fetch profile:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Add a spinner or loading animation if desired
+  }
+
+  if (email && userId) {
+    return <HomePage />; // Render HomePage if authenticated
+  }
+
+  return <Landing />; // Render Login if not authenticated
 }
