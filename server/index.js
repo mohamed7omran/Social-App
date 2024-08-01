@@ -30,7 +30,7 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+app.use("/image", express.static(path.join(__dirname, "public/image")));
 app.use(cookieParser());
 
 app.use(
@@ -42,7 +42,7 @@ app.use(
 // file storage //
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/assets");
+    cb(null, "public/image");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
