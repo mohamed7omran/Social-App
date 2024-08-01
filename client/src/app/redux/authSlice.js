@@ -2,25 +2,25 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   email: null,
-  id: null,
+  userId: null,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setEmail: (state, action) => {
+    setGlobalEmail: (state, action) => {
       state.email = action.payload; // Set email
     },
-    setId: (state, action) => {
-      state.id = action.payload; // Set userId
+    setGlobalId: (state, action) => {
+      state.userId = action.payload; // Set userId
     },
     logout: (state) => {
       state.email = null; // Clear email on logout
-      state.id = null; // Clear id on logout
+      state.userId = null; // Clear id on logout
     },
   },
 });
 
-export const { setEmail, setId, logout } = authSlice.actions;
+export const { setGlobalEmail, setGlobalId, logout } = authSlice.actions;
 export default authSlice.reducer;

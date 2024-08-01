@@ -2,6 +2,8 @@
 import axios from "axios";
 import React, { useEffect, useContext, useState } from "react";
 import { IoMdPersonAdd } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { setGlobalEmail, setGlobalId } from "../../redux/authSlice";
 // import { UserContext } from "../page";
 
 const Register = () => {
@@ -9,10 +11,13 @@ const Register = () => {
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const dispatch = useDispatch();
+
   // const [proImg, setProImg] = useState();
 
   const handelSubmit = async (event) => {
     event.preventDefault();
+
     const url = "http://localhost:8000/auth/register";
     const { data } = await axios.post(url, {
       firstName,
@@ -22,6 +27,8 @@ const Register = () => {
       // proImg,
     });
     console.log("data is ", data);
+    dispatch(setGlobalEmail(email));
+    dispatch(setGlobalId(data.id));
   };
   return (
     <>

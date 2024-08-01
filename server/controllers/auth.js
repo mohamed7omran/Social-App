@@ -23,21 +23,13 @@ export const register = async (req, res) => {
     jwt.sign(
       { userId: newUser._id, email },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }, // Optional: Add token expiration
       (err, token) => {
         if (err) {
           return res.status(500).json({ error: "Token generation failed" });
         }
-        res
-          .cookie("token", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production", // Ensures secure cookie in production
-            expires: new Date(Date.now() + 3600000), // 1 hour from now
-          })
-          .status(201)
-          .json({
-            id: newUser._id,
-          });
+        res.cookie("token", token).status(201).json({
+          id: newUser._id,
+        });
       }
     );
 
@@ -68,6 +60,10 @@ export const login = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: err.message });
   }
+};
+// ** LOGOUT **//
+export const logout = async (req, res) => {
+  res.cookie("token", "").json("Ok");
 };
 
 // ** PROFILE **//
